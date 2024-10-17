@@ -1,0 +1,14 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-read --allow-net --allow-env --watch src/main.ts",
+    "compile": "deno compile --allow-read --allow-net --allow-env --target x86_64-pc-windows-msvc --output ed-carrier-tracker-bot src/main.ts"
+  },
+  "imports": {
+    "@std/async": "jsr:@std/async@^1.0.6",
+    "@std/fs": "jsr:@std/fs@^1.0.4",
+    "@std/path": "jsr:@std/path@^1.0.6",
+    "@std/streams": "jsr:@std/streams@^1.0.7",
+    "ky": "https://esm.sh/ky@1.7.2",
+    "zod": "https://deno.land/x/zod@v3.23.8/mod.ts"
+  }
+}
