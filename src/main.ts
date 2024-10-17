@@ -12,6 +12,7 @@ import {
 
 import {
   type JournalEntry,
+  JournalEntryCarrierJumpRequest,
   JournalEntryCarrierStats,
   SupportedJournalEntry,
 } from "./elite/types.ts";
@@ -78,6 +79,44 @@ if (!carrierStats) {
   console.log(`Found carrier: ${carrierStats.Name} (${carrierStats.Callsign})`);
 }
 
+let scheduledJump: JournalEntryCarrierJumpRequest | null = null;
+
+setInterval(async () => {
+  if (
+    scheduledJump === null || new Date(scheduledJump.DepartureTime) > new Date()
+  ) {
+    return;
+  }
+
+  if (!carrierStats) {
+    warn(
+      "Carrier stats not found, not announcing scheduled jump.",
+    );
+    return;
+  }
+
+  const data = scheduledJump;
+  scheduledJump = null;
+
+  const embed: Embed = {
+    title:
+      `${carrierStats.Name} (${carrierStats.Callsign}) is (supposed to be) jumping!`,
+    fields: [
+      {
+        name: "Destination System",
+        value: data.SystemName,
+      },
+      {
+        name: "Destination Body",
+        value: data.Body,
+      },
+    ],
+    color: 0x22c55e,
+  };
+
+  await executeWebhook(config.webhookUrl, buildWebhookPayload(embed));
+}, 1000);
+
 const processJournalEntry = async (entry: JournalEntry) => {
   const supported = SupportedJournalEntry.safeParse(entry);
 
@@ -127,10 +166,14 @@ const processJournalEntry = async (entry: JournalEntry) => {
 
     await executeWebhook(config.webhookUrl, buildWebhookPayload(embed));
 
+    scheduledJump = data;
+
     return;
   }
 
   if (data.event === "CarrierJumpCancelled") {
+    scheduledJump = null;
+
     if (!carrierStats) {
       warn(
         "Carrier stats not found, ignoring `CarrierJumpCancelled` event.",
