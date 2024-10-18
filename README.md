@@ -8,6 +8,8 @@ Messages will be sent:
 - At the expected departure time of a previously-requested carrier jump
 - When the player cancels a carrier jump
 
+![screenshot](https://github.com/user-attachments/assets/0a00bace-9817-444c-b7cd-c9cf3dd04632)
+
 Unfortunately, there isn't currently an event that (reliably) gets written to the journal when a carrier actually jumps, so the bot _does_ send a message when the carrier is expected to jump, but the timing of said message relies on the assumption that the scheduled departure time didn't change in the meantime (which can happen under some circumstances).
 
 ## Usage
