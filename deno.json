@@ -1,6 +1,7 @@
 {
   "tasks": {
     "dev": "deno run --allow-read --allow-net --allow-env --watch src/main.ts",
+    "run": "deno run --allow-read --allow-net --allow-env src/main.ts",
     "compile": "deno compile --allow-read --allow-net --allow-env --target x86_64-pc-windows-msvc --output ed-carrier-tracker-bot src/main.ts"
   },
   "imports": {
