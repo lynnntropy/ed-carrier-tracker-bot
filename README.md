@@ -8,7 +8,7 @@ Messages will be sent:
 - At the expected departure time of a previously-requested carrier jump
 - When the player cancels a carrier jump
 
-Unfortunately, there isn't currently an event that (reliably) gets written to the journal when a carrier actually jumps, so the bot _does_ send a message when the carrier is expected to jump, but the timing of said message relies on the assumption that the scheduled departure time didn't change in the meantime (which can happen under some circumstances).
+Unfortunately, there isn't currently an event that (reliably) gets written to the journal when a carrier actually jumps, so the bot _does_ send a message when the carrier is expected to be jumping, but the timing of said message relies on the assumption that the scheduled departure time didn't change since the jump was requested (which can happen under some circumstances).
 
 ## Usage
 
@@ -16,10 +16,10 @@ This bot requires [Deno](https://deno.com/) to run.
 
 You can run `deno task compile` to build a standalone Windows (x86_64) executable, or just run the bot from source with `deno task run`.
 
-The bot expects to find a `config.json` file in the current working directory. This should be JSON file containing the following fields:
+The bot expects to find a `config.json` file in the current working directory. This should be a JSON file containing the following fields:
 
 - `webhookUrl` (required): The [Discord webhook](https://discord.com/developers/docs/resources/webhook) URL to send messages to.
-- `journalDirectoryPath` (optional): The absolute path to the directory to look for journal files in. You should only need to specify this is you're not on Windows and/or you're not using the default journal directory (`%USERPROFILE%\Saved Games\Frontier Developments\Elite Dangerous`).
+- `journalDirectoryPath` (optional): The absolute path to the directory to look for journal files in. You should only need to specify this if you're not on Windows, and/or you're not using the default journal directory (`%USERPROFILE%\Saved Games\Frontier Developments\Elite Dangerous`).
 
 ## License
 
