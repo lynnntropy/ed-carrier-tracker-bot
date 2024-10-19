@@ -21,10 +21,10 @@ If you just want a `.exe` you can run and aren't interested in running the bot f
   
   You'll need [Deno](https://deno.com/) to run the bot.
 
-  You can run `deno task compile` to build a standalone Windows (x86_64) executable, or just run the bot from source with `deno task run`.
+  - `deno task run` runs the bot from source.
+  - `deno task dev` is equivalent to `deno task run`, but will restart the bot every time you make a code change.
+  - `deno task compile` builds a standalone Windows (x86_64) executable. 
 </details>
-
-
 
 The bot expects to find a `config.json` file in the current working directory. This should be a JSON file containing the following fields:
 
