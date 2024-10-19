@@ -10,11 +10,11 @@ Messages will be sent:
 
 ![screenshot](https://github.com/user-attachments/assets/0a00bace-9817-444c-b7cd-c9cf3dd04632)
 
-Unfortunately, there isn't currently an event that (reliably) gets written to the journal when a carrier actually jumps, so the bot _does_ send a message when the carrier is expected to be jumping, but the timing of said message relies on the assumption that the scheduled departure time didn't change since the jump was requested (which can happen under some circumstances).
+Unfortunately, there isn't currently an event that (reliably) gets written to the journal when a carrier actually jumps, so the bot _does_ send a message at the carrier's expected departure time, but the timing of said message relies on the assumption that the departure time didn't change since the jump was requested (which can happen under some circumstances).
 
 ## Usage
 
-This bot requires [Deno](https://deno.com/) to run.
+You'll need [Deno](https://deno.com/) to run the bot.
 
 You can run `deno task compile` to build a standalone Windows (x86_64) executable, or just run the bot from source with `deno task run`.
 
