@@ -14,9 +14,17 @@ Unfortunately, there isn't currently an event that (reliably) gets written to th
 
 ## Usage
 
-You'll need [Deno](https://deno.com/) to run the bot.
+If you just want a `.exe` you can run and aren't interested in running the bot from source, all you have to do is go to the [development release](https://github.com/lynnntropy/ed-carrier-tracker-bot/releases/tag/dev) and download `ed-carrier-tracker-bot.exe`. 
 
-You can run `deno task compile` to build a standalone Windows (x86_64) executable, or just run the bot from source with `deno task run`.
+<details>
+  <summary>If you <em>are</em> interested in contributing and/or running the bot from source, click here.</summary>
+  
+  You'll need [Deno](https://deno.com/) to run the bot.
+
+  You can run `deno task compile` to build a standalone Windows (x86_64) executable, or just run the bot from source with `deno task run`.
+</details>
+
+
 
 The bot expects to find a `config.json` file in the current working directory. This should be a JSON file containing the following fields:
 
