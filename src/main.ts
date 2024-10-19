@@ -8,6 +8,7 @@ import {
   readJournalEntriesSinceTimestamp,
   readLastJournalEntry,
   readLatestJournalEntryOfType,
+  resolveDefaultJournalDirectoryPath,
 } from "./elite/journal.ts";
 
 import {
@@ -19,7 +20,6 @@ import {
 import { config } from "./config.ts";
 import type { Embed } from "./discord/types.ts";
 import { buildWebhookPayload, executeWebhook } from "./discord/webhooks.ts";
-import { resolveDefaultJournalDirectoryPath } from "./utils.ts";
 import { warn } from "./logging.ts";
 
 if (!import.meta.main) {
