@@ -20,4 +20,7 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
+          name: Development release
+          tag_name: dev
+          make_latest: true
           files: ed-carrier-tracker-bot.exe
